@@ -5,7 +5,11 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
-    @request.save
+    if @request.save
+      redirect_to pages_thanks_path
+    else
+      render :new
+    end
   end
 
   private
