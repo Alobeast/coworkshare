@@ -14,9 +14,10 @@ class RequestsController < ApplicationController
 
   def confirm
     @request = Request.find(params[:id])
-    @request.status = 'confirmed'
-    @request.save
-    redirect_to pages_thanks_path
+    if
+      @request.update(status: 'confirmed')
+      redirect_to pages_thanks_path
+    end
   end
 
   private
