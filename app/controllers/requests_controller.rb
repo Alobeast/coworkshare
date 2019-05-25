@@ -12,6 +12,13 @@ class RequestsController < ApplicationController
     end
   end
 
+  def confirm
+    @request = Request.find(params[:id])
+    @request.status = 'confirmed'
+    @request.save
+    redirect_to pages_thanks_path
+  end
+
   private
 
   def request_params

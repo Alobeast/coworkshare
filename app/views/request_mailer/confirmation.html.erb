@@ -2,5 +2,5 @@
 <h2>Hi <%= @request.first_name %></h2>
 
 <p>
-  please confirm your email
+   <%= link_to "Please confirm your email", confirm_request_url(@request)%>
 </p>
