@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/thanks'
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   resources :requests, only: [:new, :create] do
     member do
       get 'confirm'

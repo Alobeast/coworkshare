@@ -11,6 +11,6 @@ class Request < ApplicationRecord
   private
 
   def send_confirmation_email
-    RequestMailer.confirmation(self).deliver_now
+    RequestMailer.confirmation(self).deliver_later
   end
 end
