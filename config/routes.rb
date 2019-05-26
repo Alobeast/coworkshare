@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :requests, only: [:new, :create] do
     member do
       get 'confirm'
+      get 'reconfirm'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
