@@ -16,17 +16,11 @@ class RequestsController < ApplicationController
 
   def confirm
     @request.update(status: 'confirmed')
-    # RequestMailer.reconfirmation(@request).deliver_later(wait: 30.seconds)
-    # CheckReconfirmJob.set(wait: 3.minutes).perform_later(@request.id)
-    # redirect_to pages_thanks_path
     reconfirmation
   end
 
   def reconfirm
     @request.update(reconfirmed: true)
-    # RequestMailer.reconfirmation(@request).deliver_later(wait: 30.seconds)
-    # CheckReconfirmJob.set(wait: 3.minutes).perform_later(@request.id)
-    # redirect_to pages_thanks_path
     reconfirmation
   end
 
