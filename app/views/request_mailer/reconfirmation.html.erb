@@ -1,0 +1,8 @@
+<h1>Requesting#reconfirmation</h1>
+<h2>Hi <%= @request.first_name %></h2>
+
+<p>
+  You are still in our waiting list to use one of our worstations.
+  Would you like to reconfirm?
+  <%= link_to "click here", confirm_request_url(@request)%>
+</p>

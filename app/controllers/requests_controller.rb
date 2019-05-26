@@ -14,10 +14,16 @@ class RequestsController < ApplicationController
 
   def confirm
     @request = Request.find(params[:id])
-    if
-      @request.update(status: 'confirmed')
+    if @request.update(status: 'confirmed')
       redirect_to pages_thanks_path
+      reconfirm
     end
+  end
+
+  def reconfirm
+    sleep(1.minute)
+    @request.update(status: 'expired')
+    RequestMailer.reconfirmation(@request).deliver_now
   end
 
   private

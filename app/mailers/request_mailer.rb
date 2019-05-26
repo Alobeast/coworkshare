@@ -8,6 +8,12 @@ class RequestMailer < ApplicationMailer
   def confirmation(request)
     @request = request
 
-    mail to: @request.email, subject: "Hi #{@request.first_name}"
+    mail to: @request.email, subject: "Hi #{@request.first_name} please confirm"
+  end
+
+  def reconfirmation(request)
+    @request = request
+
+    mail to: @request.email, subject: "Hi #{@request.first_name} please reconfirm"
   end
 end
