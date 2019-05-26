@@ -1,4 +1,6 @@
 class RequestsController < ApplicationController
+  before_action :set_request, only: [:confirm, :reconfirm]
+
   def new
     @request = Request.new
   end
@@ -13,23 +15,32 @@ class RequestsController < ApplicationController
   end
 
   def confirm
-    @request = Request.find(params[:id])
-    if @request.update(status: 'confirmed')
-      RequestMailer.reconfirmation(@request).deliver_later(wait: 30.seconds)
-      CheckReconfirmJob.set(wait: 3.minutes).perform_later(@request.id)
-      redirect_to pages_thanks_path
-    end
+    @request.update(status: 'confirmed')
+    # RequestMailer.reconfirmation(@request).deliver_later(wait: 30.seconds)
+    # CheckReconfirmJob.set(wait: 3.minutes).perform_later(@request.id)
+    # redirect_to pages_thanks_path
+    reconfirmation
   end
 
   def reconfirm
-    @request = Request.find(params[:id])
     @request.update(reconfirmed: true)
+    # RequestMailer.reconfirmation(@request).deliver_later(wait: 30.seconds)
+    # CheckReconfirmJob.set(wait: 3.minutes).perform_later(@request.id)
+    # redirect_to pages_thanks_path
+    reconfirmation
+  end
+
+  private
+
+  def reconfirmation
     RequestMailer.reconfirmation(@request).deliver_later(wait: 30.seconds)
     CheckReconfirmJob.set(wait: 3.minutes).perform_later(@request.id)
     redirect_to pages_thanks_path
   end
 
-  private
+  def set_request
+    @request = Request.find(params[:id])
+  end
 
   def request_params
     params.require(:request).permit(:first_name, :last_name, :email,

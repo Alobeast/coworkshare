@@ -3,7 +3,7 @@ class CheckReconfirmJob < ApplicationJob
 
   def perform(request_id)
     request = Request.find(request_id)
-    if request.reconfirmed == false
+    if !request.reconfirmed
       request.update(status: 'expired')
     else
       request.update(reconfirmed: false)
