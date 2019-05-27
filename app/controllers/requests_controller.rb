@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:confirm, :reconfirm]
+  before_action :set_request, only: [:confirm, :reconfirm, :thanks]
 
   def new
     @request = Request.new
@@ -8,7 +8,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     if @request.save
-      redirect_to pages_thanks_path
+      redirect_to thanks_request_path(@request)
     else
       render :new
     end
@@ -24,12 +24,19 @@ class RequestsController < ApplicationController
     reconfirmation
   end
 
+  def thanks
+    if @request.status == "confirmed"
+      @waiting_list = Request.order("created_at").confirmed.to_a
+      @position = @waiting_list.index { |confirmed| confirmed.id == @request.id } + 1
+    end
+  end
+
   private
 
   def reconfirmation
     RequestMailer.reconfirmation(@request).deliver_later(wait: 30.seconds)
     CheckReconfirmJob.set(wait: 3.minutes).perform_later(@request.id)
-    redirect_to pages_thanks_path
+    redirect_to thanks_request_path(@request)
   end
 
   def set_request

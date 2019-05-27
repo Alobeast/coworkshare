@@ -1,0 +1,9 @@
+<h1>Page de remerciement personnel!</h1>
+<% if @request.status == "unconfirmed" %>
+  <p>please check your inbox and confirm your request</p>
+<% elsif @request.status == "confirmed"%>
+  <h2>Votre statut est <%= @request.status %></h2>
+  <h2>La liste d'attente a <%= @waiting_list.length %> requetes</h2>
+  <h2>Vous etes numero <%= @position %> dans la liste d'attente</h2>
+<% end %>
+
