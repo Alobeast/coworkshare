@@ -15,8 +15,12 @@ class Request < ApplicationRecord
   scope :expired, -> { where(status: 'expired') }
 
   def accept!
-    unless status != "confirmed"
+    @waiting_list = Request.order('created_at').confirmed.to_a
+    @position = @waiting_list.index { |confirmed| confirmed.id == self.id }
+    if status == "confirmed" && @position == 0
       update(status: "accepted")
+    else
+      puts "error: only the first request from the waiting can be accepted!"
     end
   end
 

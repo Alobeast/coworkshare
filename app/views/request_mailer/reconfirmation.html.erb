@@ -1,9 +1,9 @@
-<h1>Hi <%= @request.first_name %></h1>
+<p>Hi <%= @request.first_name %></p>
 
 
 <p>Your request for one of our workstation is still in our waiting list.
-You are positioned number <%= @position %> on <%= @waiting_list.length %> requests.</p>
+Your request is positioned <b><%= @position %></b> out of <b><%= @waiting_list.length %></b> requests.</p>
 <p>In order to refresh the waiting list we ask for a new confirmation of your request every 3 months. If you'd like to reconfirm please <%= link_to "click here", reconfirm_request_url(@request)%>.</p>
-<p>If you do not reply before next week your request will expire.</p>
+<p>If you do not reply before <b>next week</b> your request will expire.</p>
 <p>Sincerely</p>
 

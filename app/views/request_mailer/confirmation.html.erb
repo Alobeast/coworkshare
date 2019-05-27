@@ -1,4 +1,4 @@
-<h1>Hi <%= @request.first_name %></h1>
+<p>Hi <%= @request.first_name %>,</p>
 <p>Thanks for requesting one of our workstation!</p>
-<p>In order to confirm your request please click<%= link_to "this link", confirm_request_url(@request)%></p>
+<p>In order to confirm your request please click <%= link_to "this link", confirm_request_url(@request)%>.</p>
 <p>Sincerely</p>

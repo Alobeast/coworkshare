@@ -1,13 +1,18 @@
 <div class="thanks-container">
-  <h1>Thank you!</h1>
-  <% if @request.status == "unconfirmed" %>
-    <h2>please check your inbox and confirm your request</h2>
-  <% elsif @request.status == "confirmed"%>
+  <% if @request.status == "expired" %>
+    <h1>Sorry!</h1>
     <h2>Your request is <%= @request.status %></h2>
-    <p>The waiting list currently has <%= @waiting_list.length %> requests</h2>
-    <p>Your request is on position number <%= @position %></h2>
   <% else %>
-    <h2>Your request is <%= @request.status %></h2>
+    <h1>Thank you!</h1>
+      <% if @request.status == "unconfirmed" %>
+        <h2>please check your inbox and confirm your request</h2>
+      <% elsif @request.status == "confirmed"%>
+        <h2>Your request is <%= @request.status %></h2>
+        <p>The waiting list currently has <%= @waiting_list.length %> requests</p>
+        <p>Your request is on position number <%= @position %></p>
+      <% else %>
+        <h2>Your request is <%= @request.status %></h2>
+      <% end %>
   <% end %>
 </div>
 
