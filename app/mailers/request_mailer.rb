@@ -1,5 +1,4 @@
 class RequestMailer < ApplicationMailer
-
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -8,14 +7,14 @@ class RequestMailer < ApplicationMailer
   def confirmation(request)
     @request = request
 
-    mail to: @request.email, subject: "Hi #{@request.first_name} please confirm"
+    mail to: @request.email, subject: "Please confirm your workstation request"
   end
 
   def reconfirmation(request)
     @request = request
-    @waiting_list = Request.order("created_at").confirmed.to_a
+    @waiting_list = Request.order('created_at').confirmed.to_a
     @position = @waiting_list.index { |confirmed| confirmed.id == @request.id } + 1
 
-    mail to: @request.email, subject: "Hi #{@request.first_name} please reconfirm"
+    mail to: @request.email, subject: "Please reconfirm your workstation request"
   end
 end

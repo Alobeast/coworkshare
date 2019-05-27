@@ -1,12 +1,9 @@
-<h1>Requesting#reconfirmation</h1>
-<h2>Hi <%= @request.first_name %></h2>
+<h1>Hi <%= @request.first_name %></h1>
 
-<p>
-  You are still in our waiting list to use one of our worstations.
 
-the list has <%= @waiting_list.length %> requests pending.
+<p>Your request for one of our workstation is still in our waiting list.
+You are positioned number <%= @position %> on <%= @waiting_list.length %> requests.</p>
+<p>In order to refresh the waiting list we ask for a new confirmation of your request every 3 months. If you'd like to reconfirm please <%= link_to "click here", reconfirm_request_url(@request)%>.</p>
+<p>If you do not reply before next week your request will expire.</p>
+<p>Sincerely</p>
 
-You are request number <%= @position %>
-  Would you like to reconfirm?
-  <%= link_to "click here", reconfirm_request_url(@request)%>
-</p>
