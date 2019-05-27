@@ -3,6 +3,10 @@
 
 <p>
   You are still in our waiting list to use one of our worstations.
+
+the list has <%= @waiting_list.length %> requests pending.
+
+You are request number <%= @position %>
   Would you like to reconfirm?
   <%= link_to "click here", reconfirm_request_url(@request)%>
 </p>
