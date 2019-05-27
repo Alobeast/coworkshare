@@ -1,0 +1,28 @@
+.thanks-container {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-image: asset_url('workstation.jpg');
+
+  color: whitesmoke;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.thanks-container h1 {
+  font-size: 4.5vw;
+  text-shadow: 2px 2px 3px #333;
+}
+
+.thanks-container h2 {
+  font-size: 3.5vw;
+  text-shadow: 2px 2px 3px #333;
+}
+
+.thanks-container p {
+  font-size: 2vw;
+  text-shadow: 2px 2px 3px #333;
+}
