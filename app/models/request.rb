@@ -4,9 +4,11 @@ class Request < ApplicationRecord
   validates :last_name, presence: true
   validates :first_name, presence: true
   validates :email, presence: true, uniqueness: true
+  # , format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/}
+  ## optional regex
   validates :phone_number, presence: true, uniqueness: true, length: { minimum: 10 }
+  # , format: { with: /((\+)33|0|0033)[1-9](\d{2}){4}/} ## optional regex
   validates :about, presence: true, length: { minimum: 100 }
-
   after_create :send_confirmation_email
 
   scope :unconfirmed, -> { where(status: 'unconfirmed') }
