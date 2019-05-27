@@ -1,0 +1,23 @@
+.banner {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-image: asset_url('workspace.jpg');
+
+  color: whitesmoke;
+  text-align: center;
+}
+
+.offer {
+  padding-top: 13vh;
+}
+
+.offer h1 {
+  font-size: 4.5vw;
+  text-shadow: 5px 5px 3px #333;
+}
+
+.offer h2 {
+  font-size: 3.5vw;
+  text-shadow: 5px 5px 3px #333;
+}
