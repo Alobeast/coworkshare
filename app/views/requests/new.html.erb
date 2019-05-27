@@ -1,9 +1,27 @@
-<h1>This is where you'll apply for a workstation</h1>
-<%= simple_form_for (@request) do |f| %>
-  <%= f.input :first_name, label: 'First name' %>
-  <%= f.input :last_name, label: 'Last name' %>
-  <%= f.input :email, label: 'email' %>
-  <%= f.input :phone_number, label: 'phone number'%>
-  <%= f.input :about, label: 'Tell us about you' %>
-  <%= f.submit "Request a workstation!" %>
-<% end %>
+
+<div class="request-form">
+
+  <div class="request-form-content">
+    <div class="request-form-header">
+      <h1>Request your own workstation</h1>
+      <p>(*all fields are mandatory!)</p>
+    </div>
+    <%= simple_form_for (@request) do |f| %>
+
+      <div class="full_name">
+      <%= f.input :first_name, label: 'First name:' %>
+      <%= f.input :last_name, label: 'Last name:' %>
+      </div>
+      <div class="email">
+      <%= f.input :email, label: 'email:' %>
+      </div>
+      <div class="phone_number">
+      <%= f.input :phone_number, label: 'phone number:'%>
+      </div>
+      <div class="about">
+      <%= f.input :about, label: 'Tell us about you:' %>
+      </div>
+      <%= f.submit "Confirm!", class: "btn btn-primary btn-lg confirm" %>
+    <% end %>
+  </div>
+</div>
