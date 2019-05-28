@@ -23,7 +23,8 @@ class Request < ApplicationRecord
     if status == "confirmed" && @position == 0
       update(status: "accepted")
     else
-      puts "error: only the first request from the waiting can be accepted!"
+      puts "error: only the first request from the confirmed waiting list can be
+       accepted!"
     end
   end
 
