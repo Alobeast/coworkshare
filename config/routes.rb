@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 
-  resources :requests, only: [:new, :create] do
+  resources :requests, only: [:new, :create, :index] do
     member do
       get 'confirm'
       get 'reconfirm'

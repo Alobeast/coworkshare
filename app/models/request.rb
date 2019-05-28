@@ -15,6 +15,7 @@ class Request < ApplicationRecord
   scope :confirmed, -> { where(status: 'confirmed') }
   scope :accepted, -> { where(status: 'accepted') }
   scope :expired, -> { where(status: 'expired') }
+  scope :status, -> (status) { where status: status }
 
   def accept!
     @waiting_list = Request.order('created_at').confirmed.to_a

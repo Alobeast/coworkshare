@@ -1,0 +1,35 @@
+<div class="admin-panel">
+  <h1>Admin Interface</h1>
+
+    <%= form_tag requests_path, method: :get do %>
+      <div class="select">
+        <%= label_tag("status") %>
+        <%= select_tag "status", options_for_select(["", "unconfirmed", "confirmed", "accepted", "expired"]) %>
+      </div>
+      <%= submit_tag "Search" , class: "btn btn-primary" %>
+
+    <% end %>
+
+
+  <p>Your search returned <b><%= @requests.count %> results</b></p>
+  <table class="table table-bordered results">
+    <thead>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>email</th>
+      <th>Phone number</th>
+      <th>Status</th>
+    </thead>
+    <tbody>
+      <% @requests.order('created_at').each do |request| %>
+      <tr>
+        <td><%= request.first_name %></td>
+        <td><%= request.last_name %></td>
+        <td><%= request.email %></td>
+        <td><%= request.phone_number %></td>
+        <td><%= request.status %></td>
+      <tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

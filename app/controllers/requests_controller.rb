@@ -31,6 +31,11 @@ class RequestsController < ApplicationController
     end
   end
 
+  def index
+    @requests = Request.where(nil)
+    @requests = @requests.status(params[:status]) if params[:status].present?
+  end
+
   private
 
   def reconfirmation
