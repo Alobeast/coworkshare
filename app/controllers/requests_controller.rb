@@ -15,8 +15,12 @@ class RequestsController < ApplicationController
   end
 
   def confirm
-    @request.update(status: 'confirmed')
-    reconfirmation
+    if @request.status == "unconfirmed"
+      @request.update(status: 'confirmed')
+      reconfirmation
+    else
+      redirect_to root_path
+    end
   end
 
   def reconfirm
