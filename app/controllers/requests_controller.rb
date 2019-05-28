@@ -39,8 +39,8 @@ class RequestsController < ApplicationController
   private
 
   def reconfirmation
-    RequestMailer.reconfirmation(@request).deliver_later(wait: 30.seconds)
-    CheckReconfirmJob.set(wait: 3.minutes).perform_later(@request.id)
+    RequestMailer.reconfirmation(@request).deliver_later(wait: 3.months)
+    CheckReconfirmJob.set(wait: 3.months + 7.days).perform_later(@request.id)
     redirect_to thanks_request_path(@request)
   end
 
