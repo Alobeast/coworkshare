@@ -13,8 +13,9 @@ class RequestMailer < ApplicationMailer
   def reconfirmation(request)
     @request = request
     @waiting_list = Request.order('created_at').confirmed.to_a
-    @position = @waiting_list.index { |confirmed| confirmed.id == @request.id } + 1
-
-    mail to: @request.email, subject: "Please reconfirm your workstation request"
+    if request.status == "confirmed"
+      @position = @waiting_list.index { |confirmed| confirmed.id == @request.id } + 1
+      mail to: @request.email, subject: "Please reconfirm your workstation request"
+    end
   end
 end
