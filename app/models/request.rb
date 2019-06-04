@@ -1,5 +1,6 @@
 class Request < ApplicationRecord
 
+  belongs_to :author
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :first_name, presence: true

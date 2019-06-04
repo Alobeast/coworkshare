@@ -15,7 +15,7 @@
       <div class="email" style="
     margin-bottom: .5rem;
 ">
-      <%= f.input :email, label: 'email:' %>
+      <%= f.input :email, label: 'email:', input_html: { value: current_user.email } %>
       </div>
       <div class="phone_number">
       <%= f.input :phone_number, label: 'phone number:'%>
