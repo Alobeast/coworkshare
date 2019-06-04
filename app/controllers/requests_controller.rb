@@ -6,12 +6,14 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(request_params)
-    if @request.save
+    # @request = current_user.request.build(request_params)
+    @request = Request.new(request_params.merge(user_id: current_user.id))
+    if @request.save!
       redirect_to thanks_request_path(@request)
     else
       render :new
     end
+
   end
 
   def confirm
@@ -54,6 +56,6 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:first_name, :last_name, :email,
-                                    :phone_number, :about, :status, :reconfirmed)
+                                    :phone_number, :about, :status, :reconfirmed, :user_id)
   end
 end
