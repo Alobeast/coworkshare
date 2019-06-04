@@ -39,6 +39,11 @@ class RequestsController < ApplicationController
     if current_user.admin?
       @requests = Request.where(nil)
       @requests = @requests.status(params[:status]) if params[:status].present?
+
+      respond_to do |format|
+        format.xlsx { response.headers['Content-Disposition'] = "attachment; filename=requests.xlsx"}
+        format.html { render :index }
+      end
     else
       redirect_to root_path
     end

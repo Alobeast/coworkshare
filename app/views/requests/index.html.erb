@@ -1,6 +1,7 @@
 <div class="admin-panel">
   <h1>Admin Interface</h1>
 
+
     <%= form_tag requests_path, method: :get do %>
       <div class="select">
         <%= label_tag("status") %>
@@ -12,6 +13,7 @@
 
 
   <p>Your search returned <b><%= @requests.count %> results</b></p>
+  <%= link_to 'Export as Excel', requests_path(format: :xlsx) %>
   <table class="table table-bordered results">
     <thead>
       <th>First Name</th>

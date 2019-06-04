@@ -1,0 +1,10 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Requests") do |sheet|
+  # Create the header row
+  sheet.add_row ["First Name", "Last Name", "Email", "Phone Number", "Status"]
+  # Create entries for each item
+  @requests.order('created_at').each do |request|
+    sheet.add_row [request.first_name, request.last_name, request.email, request.phone_number, request.status]
+  end
+end
