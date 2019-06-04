@@ -6,14 +6,12 @@ class RequestsController < ApplicationController
   end
 
   def create
-    # @request = current_user.request.build(request_params)
     @request = Request.new(request_params.merge(user: current_user))
     if @request.save!
       redirect_to thanks_request_path(@request)
     else
       render :new
     end
-
   end
 
   def confirm
@@ -38,8 +36,12 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @requests = Request.where(nil)
-    @requests = @requests.status(params[:status]) if params[:status].present?
+    if current_user.admin?
+      @requests = Request.where(nil)
+      @requests = @requests.status(params[:status]) if params[:status].present?
+    else
+      redirect_to root_path
+    end
   end
 
   private
