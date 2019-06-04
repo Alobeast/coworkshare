@@ -7,7 +7,7 @@ class RequestsController < ApplicationController
 
   def create
     # @request = current_user.request.build(request_params)
-    @request = Request.new(request_params.merge(user_id: current_user.id))
+    @request = Request.new(request_params.merge(user: current_user))
     if @request.save!
       redirect_to thanks_request_path(@request)
     else
@@ -56,6 +56,6 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:first_name, :last_name, :email,
-                                    :phone_number, :about, :status, :reconfirmed, :user_id)
+                                    :phone_number, :about, :status, :reconfirmed, :user)
   end
 end
