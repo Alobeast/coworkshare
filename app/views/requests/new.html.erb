@@ -3,11 +3,13 @@
 
   <div class="request-form-content">
     <div class="request-form-header">
-      <h1>Request your own workstation</h1>
-      <p>(*all fields are mandatory!)</p>
+      <h1>Request a room</h1>
     </div>
+
+
     <%= simple_form_for (@request) do |f| %>
 
+      <%= f.association :room %>
       <!-- <div class="full_name"> -->
       <%#= f.input :first_name, label: 'First name:' %>
       <%#= f.input :last_name, label: 'Last name:' %>

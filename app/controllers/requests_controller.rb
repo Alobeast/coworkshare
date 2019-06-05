@@ -3,6 +3,7 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
+    @rooms = Room.all
   end
 
   def create
@@ -63,6 +64,6 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:first_name, :last_name, :email,
-                                    :phone_number, :about, :status, :reconfirmed, :user)
+                                    :phone_number, :about, :status, :reconfirmed, :user, :room_id)
   end
 end
