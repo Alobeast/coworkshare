@@ -10,6 +10,10 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'devise'
 
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+
+
 # Excel file export
 gem 'rubyzip', '>= 1.2.1'
 gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
