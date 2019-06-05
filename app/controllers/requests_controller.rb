@@ -37,7 +37,7 @@ class RequestsController < ApplicationController
 
   def index
     if current_user.admin?
-      @requests = Request.where(nil)
+      @requests = Request.all
       @requests = @requests.status(params[:status]) if params[:status].present?
 
       respond_to do |format|

@@ -13,7 +13,7 @@
 
 
   <p>Your search returned <b><%= @requests.count %> results</b></p>
-  <%= link_to 'Export as Excel', requests_path(format: :xlsx) %>
+  <%= link_to 'Export as Excel', requests_path(status: params[:status], format: :xlsx) %>
   <table class="table table-bordered results">
     <thead>
       <th>First Name</th>
