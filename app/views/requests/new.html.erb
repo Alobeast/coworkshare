@@ -8,21 +8,21 @@
     </div>
     <%= simple_form_for (@request) do |f| %>
 
-      <div class="full_name">
-      <%= f.input :first_name, label: 'First name:' %>
-      <%= f.input :last_name, label: 'Last name:' %>
-      </div>
-      <div class="email" style="
+      <!-- <div class="full_name"> -->
+      <%#= f.input :first_name, label: 'First name:' %>
+      <%#= f.input :last_name, label: 'Last name:' %>
+      <!-- </div> -->
+    <!--   <div class="email" style="
     margin-bottom: .5rem;
-">
-      <%= f.input :email, label: 'email:', input_html: { value: current_user.email } %>
-      </div>
-      <div class="phone_number">
-      <%= f.input :phone_number, label: 'phone number:'%>
-      </div>
-      <div class="about">
-      <%= f.input :about, label: 'Tell us about you:' %>
-      </div>
+"> -->
+      <%#= f.input :email, label: 'email:', input_html: { value: current_user.email } %>
+      <!-- </div> -->
+      <!-- <div class="phone_number"> -->
+      <%#= f.input :phone_number, label: 'phone number:'%>
+      <!-- </div> -->
+      <!-- <div class="about"> -->
+      <%#= f.input :about, label: 'Tell us about you:' %>
+      <!-- </div> -->
       <%= f.submit "Confirm!", class: "btn btn-primary btn-lg confirm" %>
     <% end %>
   </div>

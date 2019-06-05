@@ -6,7 +6,7 @@
     <%= link_to "Sign-up!",  new_user_registration_path, class: "btn btn-primary btn-lg"  %>
     <%= link_to "Sign-in!",  new_user_session_path, class: "btn btn-primary btn-lg"  %>
     <% else %>
-    <%= link_to "join us!",  new_request_path, class: "btn btn-primary btn-lg"  %>
+    <%= link_to "Request a room!",  new_request_path, class: "btn btn-primary btn-lg"  %>
     <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-primary btn-lg"  %>
   <% end %>
 
