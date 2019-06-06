@@ -12,7 +12,7 @@ gem 'devise'
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-
+gem 'jquery-rails'
 
 # Excel file export
 gem 'rubyzip', '>= 1.2.1'
