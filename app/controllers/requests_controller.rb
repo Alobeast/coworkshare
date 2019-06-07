@@ -6,26 +6,13 @@ class RequestsController < ApplicationController
     @requests = Request.all
     @rooms = Room.all
 
-    @request_array = @requests.map do |request|
+    @request_array = @requests.map { |request|
         {
           title: "#{request.room.name} room",
-          start: request.start_date,
-          end: request.end_date
+          start: request.start_date.strftime("%Y-%m-%d"),
+          end: request.end_date.strftime("%Y-%m-%d")
         }
-    end
-
-    # @events_array =
-    #     [
-    #         {
-    #             title: 'event1',
-    #             start: '2019-06-10'
-    #         },
-    #         {
-    #             title: 'event2',
-    #             start: '2019-06-12',
-    #             end: '2019-06-17'
-    #         }
-    #     ]
+    }.to_json
   end
 
   def create
