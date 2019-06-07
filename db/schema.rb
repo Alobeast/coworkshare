@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_114153) do
+ActiveRecord::Schema.define(version: 2019_06_06_101037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2019_06_05_114153) do
     t.boolean "reconfirmed", default: false
     t.bigint "user_id"
     t.bigint "room_id"
+    t.date "start_date"
+    t.date "end_date"
     t.index ["room_id"], name: "index_requests_on_room_id"
     t.index ["user_id"], name: "index_requests_on_user_id"
   end

@@ -4,6 +4,7 @@
   <div class="request-form-content">
     <div class="request-form-header">
       <h1>Request a room</h1>
+      <%= @request_array %>
     </div>
 
 
@@ -31,3 +32,27 @@
     <div id="calendar"></div>
   </div>
 </div>
+
+<script>
+  var requests = <%= @request_array %>
+//   $( document ).ready(function() {
+//   $('#calendar').fullCalendar({
+//      dayClick: function() {
+//     alert('a day has been clicked!');
+//   },
+//     weekends: false,
+//     events:  @request_array
+//     // events: [
+//     //           {
+//     //               title: 'red room',
+//     //               start: '2019-06-17',
+//     //               end: '2019-06-21'
+//     //           },
+//     //           {
+//     //               title: 'yellow room',
+//     //               start: '2019-06-03',
+//     //               end: '2019-06-07'
+//     //           }
+//     //       ]
+// });})
+</script>
