@@ -4,7 +4,7 @@ $( document ).ready(function() {
     alert('a day has been clicked!');
   },
     weekends: false,
-    events:  requests
+    events: requests
     // events: [
     //           {
     //               title: 'red room',
@@ -18,7 +18,3 @@ $( document ).ready(function() {
     //           }
     //       ]
 });})
-
-
-
-// $( document ).ready(function() {$('#calendar').fullCalendar('next');})
