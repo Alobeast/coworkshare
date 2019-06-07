@@ -1,9 +1,31 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:confirm, :reconfirm, :thanks]
 
-  def new
+   def new
     @request = Request.new
+    @requests = Request.all
     @rooms = Room.all
+
+    @request_array = @requests.map do |request|
+        {
+          title: "#{request.room.name} room",
+          start: request.start_date,
+          end: request.end_date
+        }
+    end
+
+    # @events_array =
+    #     [
+    #         {
+    #             title: 'event1',
+    #             start: '2019-06-10'
+    #         },
+    #         {
+    #             title: 'event2',
+    #             start: '2019-06-12',
+    #             end: '2019-06-17'
+    #         }
+    #     ]
   end
 
   def create
