@@ -10,6 +10,10 @@
     <%= simple_form_for (@request) do |f| %>
 
       <%= f.association :room %>
+      <%= f.input :start_date, label: 'start date:' %>
+      <%= f.input :end_date, label: 'end date:' %>
+
+
       <!-- <div class="full_name"> -->
       <%#= f.input :first_name, label: 'First name:' %>
       <%#= f.input :last_name, label: 'Last name:' %>
