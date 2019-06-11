@@ -10,7 +10,7 @@ class RequestsController < ApplicationController
         {
           title: "#{request.room.name} room",
           start: request.start_date.strftime("%Y-%m-%d"),
-          end: request.end_date.strftime("%Y-%m-%d")
+          end: (request.end_date + 1.days).strftime("%Y-%m-%d")
         }
     }.to_json
   end
@@ -73,6 +73,6 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:first_name, :last_name, :email,
-                                    :phone_number, :about, :status, :reconfirmed, :user, :room_id)
+                                    :phone_number, :about, :status, :reconfirmed, :user, :room_id, :start_date, :end_date)
   end
 end
