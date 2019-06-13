@@ -4,6 +4,7 @@ class Request < ApplicationRecord
   belongs_to :room
 
   validate :end_date_after_start_date
+  validate :dates_not_booked
   # validates :first_name, presence: true
   # validates :last_name, presence: true
   # validates :first_name, presence: true
@@ -45,4 +46,17 @@ class Request < ApplicationRecord
       errors.add(:end_date, "must be after the start date")
     end
   end
+
+  def dates_not_booked
+    bookings = Request.where(room_id: self.room_id)
+
+    date_ranges = bookings.map { |booking| booking.start_date..booking.end_date }
+
+    date_ranges.each do |range|
+      if range.include? self.start_date || self.end_date
+        errors.add(:base, "dates already booked")
+      end
+    end
+  end
+
 end
