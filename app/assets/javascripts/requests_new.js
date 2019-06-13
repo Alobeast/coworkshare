@@ -10,17 +10,20 @@ $( document ).ready(function() {
                     // newEvent.title = abc;
                     var e = document.getElementById("request_room_id");
                     var userChoice = e.options[e.selectedIndex].text;
-                    var endDate = end.subtract(1, "days");
+                    var trueEnd = moment(end).format();
+
+
                     if (userChoice === "") {alert("Please choose a room!")}
                       else
-                    {if (confirm (`confirm these dates? ${moment(start).format('DD/MM/YYYY')} to ${moment(end).format('DD/MM/YYYY')} in ${userChoice} room`)){newEvent.start = moment(start).format(),
-
-                                                            newEvent.end = moment(endDate).format(),
-                                                            newEvent.title = `${userChoice} room`,
-                                                            newEvent.allDay = true};
-                                                            debugger;
-
-                                        $('#calendar').fullCalendar('renderEvent', newEvent)};
+                    {if (confirm (`confirm these dates? ${moment(start).format('DD/MM/YYYY')} to ${moment(end.subtract(1, "days")).format('DD/MM/YYYY')} in ${userChoice} room`))
+                      {
+                        newEvent.start = moment(start).format(),
+                        newEvent.end = trueEnd,
+                        newEvent.title = `${userChoice} room`,
+                        newEvent.allDay = true
+                      };
+                        $('#calendar').fullCalendar('renderEvent', newEvent)};
+                        // debugger
                     // var bookings = $('#calendar').fullCalendar('clientEvents');
                     // var lastBooking = bookings[bookings.length - 1];
 
