@@ -1,0 +1,9 @@
+<% @rooms.each do |room| %>
+  <div class="room">
+    <% @room_attributes.each do |room_attribute| %>
+      <div class="room-spec">
+        <%= room[room_attribute] %>
+      </div>
+      <% end %>
+  </div>
+<% end %>

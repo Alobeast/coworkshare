@@ -19,7 +19,7 @@ class RequestsController < ApplicationController
     if request.xhr?
       # JSON.parse(params[:eventsJson])
       @request = Request.new(json_params.merge(user: current_user))
-      byebug
+
       if @request.save!
         redirect_to thanks_request_path(@request)
       else

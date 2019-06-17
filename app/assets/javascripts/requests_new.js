@@ -32,7 +32,7 @@ $( document ).ready(function() {
                                                   start_date: lastBooking.start._i,
                                                   end_date: lastBooking.end._i
                                                   };
-                        debugger;
+                        // debugger;
                         $.ajax(
                                         {
                                           url: "/requests",

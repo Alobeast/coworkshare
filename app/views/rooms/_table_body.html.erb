@@ -1,0 +1,11 @@
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <% @room_attributes.each do |room_attribute| %>
+          <td>
+            <%= room[room_attribute] %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
