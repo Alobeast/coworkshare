@@ -16,11 +16,22 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new(request_params.merge(user: current_user))
-    if @request.save!
-      redirect_to thanks_request_path(@request)
+    if request.xhr?
+      # JSON.parse(params[:eventsJson])
+      @request = Request.new(json_params.merge(user: current_user))
+      byebug
+      if @request.save!
+        redirect_to thanks_request_path(@request)
+      else
+        render :new
+      end
     else
-      render :new
+      @request = Request.new(request_params.merge(user: current_user))
+      if @request.save!
+        redirect_to thanks_request_path(@request)
+      else
+        render :new
+      end
     end
   end
 
@@ -74,5 +85,9 @@ class RequestsController < ApplicationController
   def request_params
     params.require(:request).permit(:first_name, :last_name, :email,
                                     :phone_number, :about, :status, :reconfirmed, :user, :room_id, :start_date, :end_date)
+  end
+
+  def json_params
+    JSON.parse(params[:eventsJson])
   end
 end
