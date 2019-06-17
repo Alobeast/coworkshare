@@ -9,29 +9,36 @@ $( document ).ready(function() {
                     var newEvent = new Object();
                     // newEvent.title = abc;
                     var e = document.getElementById("request_room_id");
-                    var userChoice = e.options[e.selectedIndex].text;
+                    var roomChoice = e.options[e.selectedIndex].text;
+                    var roomChoiceId = e.options[e.selectedIndex].value;
                     var trueEnd = moment(end).format();
 
+                    // debugger;
 
-                    if (userChoice === "") {alert("Please choose a room!")}
+                    if (roomChoice === "") {alert("Please choose a room!")}
                       else
-                    {if (confirm (`confirm these dates? ${moment(start).format('DD/MM/YYYY')} to ${moment(end.subtract(1, "days")).format('DD/MM/YYYY')} in ${userChoice} room`))
+                    {if (confirm (`confirm these dates? ${moment(start).format('DD/MM/YYYY')} to ${moment(end.subtract(1, "days")).format('DD/MM/YYYY')} in ${roomChoice} room`))
                       {
                         newEvent.start = moment(start).format(),
                         newEvent.end = trueEnd,
-                        newEvent.title = `${userChoice} room`,
+                        newEvent.title = `${roomChoice} room`,
                         newEvent.allDay = true
                       };
                         $('#calendar').fullCalendar('renderEvent', newEvent)};
-                        // debugger
-                    // var bookings = $('#calendar').fullCalendar('clientEvents');
-                    // var lastBooking = bookings[bookings.length - 1];
-
-                    // var lastBookingObject  =
-                    // {
-                    //   start_date: lastBooking.start._i,
-                    //   end_date: lastBooking.end._i
-                    // };
+                        var bookings = $('#calendar').fullCalendar('clientEvents');
+                        var lastBooking = bookings[bookings.length - 1];
+                        var lastBookingObject  = {
+                                                  room_id: roomChoiceId,
+                                                  start_date: lastBooking.start._i,
+                                                  end_date: lastBooking.end._i
+                                                  };
+                        debugger;
+                        $.ajax(
+                                        {
+                                          url: "/requests",
+                                          type: 'POST',
+                                          data: { eventsJson: JSON.stringify(lastBookingObject) },
+                                        });
 
                     // confirm($.ajax(
                     //                     {
