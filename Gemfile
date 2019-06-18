@@ -10,6 +10,8 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'devise'
 
+gem "aws-sdk-s3", require: false
+
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jquery-rails'

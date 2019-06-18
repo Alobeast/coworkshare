@@ -5,5 +5,10 @@
         <%= room[room_attribute] %>
       </div>
       <% end %>
+      <% if room.picture.attached?  %>
+      <div class="room-picture"><%= image_tag url_for(room.picture) %></div>
+      <% end %>
   </div>
 <% end %>
+
+

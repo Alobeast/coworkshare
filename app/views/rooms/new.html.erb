@@ -1,0 +1,8 @@
+<%= simple_form_for (@room) do |f| %>
+  <%= f.input :name, label: 'name:' %>
+  <%= f.input :size, label: 'size:' %>
+  <%= f.input :price, label: 'price:' %>
+  <%= f.input :picture, label: 'picture:' %>
+
+  <%= f.submit "Create room!", class: "btn btn-primary btn-lg confirm" %>
+<% end %>
