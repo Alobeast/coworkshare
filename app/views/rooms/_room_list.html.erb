@@ -1,14 +1,11 @@
 <% @rooms.each do |room| %>
   <div class="room">
-    <% @room_attributes.each do |room_attribute| %>
-      <div class="room-spec">
-        <%= room[room_attribute] %>
-      </div>
-      <% end %>
-      <% if room.picture.attached?  %>
+    <% if room.picture.attached?  %>
       <div class="room-picture"><%= image_tag url_for(room.picture) %></div>
-      <% end %>
+    <% end %>
+      <div class="room-spec">
+        <h2><%= room.name %></h2>
+        <p>max. capacity <%= room.size %> person / <%= room.price %>€ per day </p>
+      </div>
   </div>
 <% end %>
-
-
