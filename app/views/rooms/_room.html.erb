@@ -1,0 +1,9 @@
+<div class="room">
+  <% if room.picture.attached?  %>
+    <div class="room-picture"><%= image_tag url_for(room.picture) %></div>
+  <% end %>
+  <div class="room-spec">
+    <h2><%= room.name %></h2>
+    <p>max. capacity <%= room.size %> person / <%= room.price %>€ per day </p>
+  </div>
+</div>

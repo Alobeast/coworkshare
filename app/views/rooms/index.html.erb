@@ -3,6 +3,12 @@
   <%#= render "table_body" %>
 </table> -->
 
+<!-- <div class="room-list">
+  <%#= render "room_list" %>
+</div> -->
+
 <div class="room-list">
-  <%= render "room_list" %>
+  <% @rooms.each do |room| %>
+    <%= render "room", room: room %>
+  <% end %>
 </div>
