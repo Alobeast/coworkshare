@@ -13,9 +13,13 @@ class RoomsController < ApplicationController
     redirect_to rooms_path
   end
 
+  def edit
+    @room = Room.find(params[:id])
+  end
+
 
   private
     def room_params
-      params.require(:room).permit(:name, :size, :price, :picture)
+      params.require(:room).permit(:name, :size, :price, :picture, {service_ids: []})
     end
 end
