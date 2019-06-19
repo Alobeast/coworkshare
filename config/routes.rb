@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :rooms, only: [:index, :new, :create]
+  resources :rooms
+  resources :services
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
