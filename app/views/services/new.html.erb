@@ -1,0 +1,8 @@
+<%= simple_form_for (@service) do |f| %>
+  <%= f.input :name, label: 'name:' %>
+  <%= f.input :quantity_day, label: 'available quantity/day:' %>
+  <%= f.input :price_unit_day, label: 'price/person/day:' %>
+
+
+  <%= f.submit "Create service", class: "btn btn-primary btn-lg confirm" %>
+<% end %>

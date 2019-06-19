@@ -17,6 +17,11 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
   end
 
+  def update
+    @room = Room.find(params[:id])
+    @room.update!(room_params)
+    redirect_to rooms_path
+  end
 
   private
     def room_params
