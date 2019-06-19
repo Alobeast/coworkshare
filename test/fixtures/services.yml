@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  quantity_day: 1
+  price_unit_day: 1
+
+two:
+  type: 
+  quantity_day: 1
+  price_unit_day: 1
