@@ -12,7 +12,7 @@
 
 .room {
   overflow: hidden;
-  height: 120px;
+  height: 140px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -26,8 +26,8 @@
 }
 
 .room-picture img {
-  height: 120px;
-  width: 120px;
+  height: 140px;
+  width: 140px;
   object-fit: cover;
 }
 
