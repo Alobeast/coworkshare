@@ -1,13 +1,7 @@
 $( document ).ready(function() {
   $('#calendar').fullCalendar({
-  //    dayClick: function() {
-  //   alert('a day has been clicked!');
-  // },
     select: function (start, end, jsEvent, view) {
-                    // var abc = prompt('Enter Title');
-                    // var allDay = !start.hasTime && !end.hasTime;
                     var newEvent = new Object();
-                    // newEvent.title = abc;
                     var e = document.getElementById("request_room_id");
                     var roomChoice = e.options[e.selectedIndex].text;
                     var roomChoiceId = e.options[e.selectedIndex].value;
@@ -30,63 +24,22 @@ $( document ).ready(function() {
                         var lastBookingObject  = {
                                                   room_id: roomChoiceId,
                                                   start_date: lastBooking.start._i,
-                                                  end_date: lastBooking.end._i
+                                                  end_date: moment(end).format('DD/MM/YYYY')
                                                   };
-                        // debugger;
+                        debugger;
                         $.ajax(
                                         {
                                           url: "/requests",
                                           type: 'POST',
                                           data: { eventsJson: JSON.stringify(lastBookingObject) },
                                         });
-
-                    // confirm($.ajax(
-                    //                     {
-                    //                       url: "/requests",
-                    //                       type: 'POST',
-                    //                       data: { eventsJson: JSON.stringify(lastBookingObject) },
-                    //                     }));
                 },
 
-    //     function () {
-    //     $("#save").click(function () {
-    //         var eventsFromCalendar = $('#calendar').fullCalendar('clientEvents');
-    //         debugger;
-    //         $.ajax(
-    //     {
-
-    //         url: "/requests",
-    //         type: 'POST',
-    //         traditional: true,
-    //         data: { eventsJson: JSON.stringify(eventsFromCalendar) },
-    //         dataType: "json",
-    //         success: function (response) {
-    //             alert(response);
-    //         },
-    //         error: function (xhr) {
-    //             debugger;
-    //             alert(xhr);
-    //         }
-
-    //     });
-    //     });
-    // },
 
     weekends: false,
     selectable: true,
     events: requests
-    // events: [
-    //           {
-    //               title: 'red room',
-    //               start: '2019-06-17',
-    //               end: '2019-06-21'
-    //           },
-    //           {
-    //               title: 'yellow room',
-    //               start: '2019-06-03',
-    //               end: '2019-06-07'
-    //           }
-    //       ]
+
 });});
 
 
