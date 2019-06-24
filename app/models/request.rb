@@ -2,7 +2,9 @@ class Request < ApplicationRecord
 
   belongs_to :user
   belongs_to :room
-  has_and_belongs_to_many :services
+  # has_and_belongs_to_many :services
+  has_many :request_services
+  has_many :services, through: :request_services
 
   validate :end_date_after_start_date
   validate :dates_not_booked
