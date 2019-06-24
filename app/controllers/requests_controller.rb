@@ -9,7 +9,7 @@ class RequestsController < ApplicationController
       @room = Room.find(JSON.parse(params[:attributes])["room_id"].to_i)
       @request.update_attributes(JSON.parse(params[:attributes]))
       render :partial => 'modal_partial'
-      byebug
+      # byebug
       return
     end
     @requests = Request.all
@@ -33,7 +33,10 @@ class RequestsController < ApplicationController
         render :new
       end
     else
+
       @request = Request.new(request_params.merge(user: current_user))
+      @request.service_ids = params[:request][:service_ids]
+
       if @request.save!
         redirect_to thanks_request_path(@request)
       else
@@ -91,7 +94,7 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:first_name, :last_name, :email,
-                                    :phone_number, :about, :status, :reconfirmed, :user, :room_id, :start_date, :end_date)
+                                    :phone_number, :about, :status, :reconfirmed, :user, :room_id, :start_date, :end_date, :service_ids)
   end
 
   def json_params
