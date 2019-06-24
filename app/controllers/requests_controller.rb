@@ -3,9 +3,17 @@ class RequestsController < ApplicationController
 
    def new
     @request = Request.new
+    @room = Room.new
+    if request.xhr?
+
+      @room = Room.find(JSON.parse(params[:attributes])["room_id"].to_i)
+      @request.update_attributes(JSON.parse(params[:attributes]))
+      render :partial => 'modal_partial'
+      byebug
+      return
+    end
     @requests = Request.all
     @rooms = Room.all
-
     @request_array = @requests.map { |request|
         {
           title: "#{request.room.name} room",
@@ -19,7 +27,6 @@ class RequestsController < ApplicationController
     if request.xhr?
       # JSON.parse(params[:eventsJson])
       @request = Request.new(json_params.merge(user: current_user))
-
       if @request.save!
         redirect_to thanks_request_path(@request)
       else
