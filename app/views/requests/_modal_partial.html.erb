@@ -9,11 +9,33 @@
         </div>
         <div class="modal-body">
 
-          <% @room.services.each do |service| %>
-            <%= service.name %>
+         <!--  <%#= form_tag do %>
+            <ul>
+              <%# @room.services.each do |service| %>
+                <li class="quantity">
+                  <%#= service.name %>
+                  <%#= number_field(:service_id, :quantity) %>
+                </li>
+              <%# end %>
+            </ul>
+            <%#= submit_tag("confirm") %>
+          <%# end %> -->
+
+          <%= simple_form_for (@request) do |f| %>
+          <%= f.association :room, as: :hidden %>
+          <%= f.input :start_date, as: :hidden %>
+          <%= f.input :end_date, as: :hidden %>
+            <% @request.room.services.each do |service| %>
+              <%= check_box_tag  "request[service_ids][]", service.id %>
+              <%= service.name %><br>
+            <% end %>
+          <%= f.submit "Confirm!", class: "btn btn-primary btn-lg confirm", id: "save" %>
+
+
           <% end %>
-           <%= @request.room_id %>
-           <%= @request.services.count %>
+
+
+
 
         </div>
         <div class="modal-footer">

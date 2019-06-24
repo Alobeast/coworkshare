@@ -28,6 +28,7 @@ $( document ).ready(function() {
                           start_date: lastBooking.start._i,
                           end_date: lastBooking.end.subtract(1, "days").format('DD/MM/YYYY')
                           };
+                          // debugger;
                       $.ajax(
                                         {
                                           url: "/requests/new",
@@ -37,7 +38,7 @@ $( document ).ready(function() {
                                             // $('.modal_partial').replaceWith(response);
                                             $('.modal_partial').html(response);
                                             $('#myModal').modal('show');
-
+                                            // debugger;
                                             // $('.modal_partial').html($(`#myModal`).html());
                                             // $('#myModal').modal('show');
                                             // console.log($('#myModal').html);
