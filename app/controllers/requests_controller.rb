@@ -4,10 +4,16 @@ class RequestsController < ApplicationController
    def new
     @request = Request.new
     @room = Room.new
+
     if request.xhr?
 
       @room = Room.find(JSON.parse(params[:attributes])["room_id"].to_i)
       @request.update_attributes(JSON.parse(params[:attributes]))
+      @ajax_params = JSON.parse(params[:attributes])
+      @start_date = Date.parse @ajax_params["start_date"]
+      @end_date = Date.parse @ajax_params["end_date"]
+      @length = (@end_date - @start_date).to_i + 1
+      @price = @request.room.price * @length
       render :partial => 'modal_partial'
       # byebug
       return

@@ -25,8 +25,8 @@ $( document ).ready(function() {
                         // debugger;
                       var requestAttr = {
                           room_id: roomChoiceId,
-                          start_date: lastBooking.start._i,
-                          end_date: lastBooking.end.subtract(1, "days").format('DD/MM/YYYY')
+                          start_date: lastBooking.start,
+                          end_date: lastBooking.end.subtract(1, "days")
                           };
                           // debugger;
                       $.ajax(
