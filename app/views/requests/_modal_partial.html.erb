@@ -20,26 +20,27 @@
             </ul>
             <%#= submit_tag("confirm") %>
           <%# end %> -->
-
+        <p>Would you like to add these services?</p>
           <%= simple_form_for (@request) do |f| %>
-          <%= f.association :room, as: :hidden %>
-          <%= f.input :start_date, as: :hidden %>
-          <%= f.input :end_date, as: :hidden %>
-            <% @request.room.services.each do |service| %>
-              <%= check_box_tag  "request[service_ids][]", service.id %>
-              <%= service.name %><br>
-            <% end %>
-          <%= f.submit "Confirm!", class: "btn btn-primary btn-lg confirm", id: "save" %>
 
+            <%= f.association :room, as: :hidden %>
+            <%= f.input :start_date, as: :hidden %>
+            <%= f.input :end_date, as: :hidden %>
 
-          <% end %>
-
-
-
-
+              <% @request.room.services.each do |service| %>
+                <%= check_box_tag  "request[service_ids][]", service.id %>
+                <%= service.name %><br>
+              <% end %>
         </div>
+        <div class="price">Total: <%= @price %>€</div>
+        <div><%= @params %></div>
+        <div><%= @start_date %></div>
+        <div><%= @end_date %></div>
+        <div><%= @length %></div>
+
         <div class="modal-footer">
-          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          <%= f.submit "Confirm!", class: "btn btn-primary confirm", id: "save" %>
+          <% end %>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
